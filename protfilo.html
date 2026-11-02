@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Subbaih Das I — Embedded Systems Engineer</title>
+<meta name="description" content="Portfolio of Subbaih Das I, ECE student focused on embedded systems, ESP32, Arduino and IoT.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0e14;--bg2:#10161f;--card:#131a24;--line:#1f2a38;--tx:#e6edf5;--mut:#8696aa;--ac:#2ee6a6;--ac2:#4da3ff;--r:16px}
+body.light{--bg:#f5f7fa;--bg2:#eaeef3;--card:#fff;--line:#d9e0e8;--tx:#121a24;--mut:#5b6b7e;--ac:#0b9a6c;--ac2:#1f6fd1}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk',system-ui,sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;overflow-x:hidden;transition:background .3s,color .3s}
+body::before{content:"";position:fixed;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;opacity:.35;pointer-events:none;mask-image:radial-gradient(circle at 50% 20%,#000,transparent 70%);-webkit-mask-image:radial-gradient(circle at 50% 20%,#000,transparent 70%)}
+a{color:inherit;text-decoration:none}
+.mono{font-family:'JetBrains Mono',monospace}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px;position:relative}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--ac),var(--ac2));z-index:100}
+nav{position:fixed;top:0;width:100%;z-index:50;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 75%,transparent);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:700;font-size:1.1rem}.logo span{color:var(--ac)}
+nav ul{display:flex;gap:26px;list-style:none;align-items:center}
+nav ul a{font-size:.92rem;color:var(--mut);transition:color .2s}
+nav ul a:hover{color:var(--ac)}
+#theme{background:none;border:1px solid var(--line);color:var(--tx);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1rem}
+#menu{display:none;background:none;border:0;color:var(--tx);font-size:1.5rem;cursor:pointer}
+section{padding:110px 0 30px}
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:90px}
+.hero .glow{position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,var(--ac) 0%,transparent 65%);opacity:.18;right:-80px;top:-40px;filter:blur(30px);animation:float 9s ease-in-out infinite}
+@keyframes float{50%{transform:translate(-30px,30px)}}
+.tag{display:inline-block;border:1px solid var(--line);background:var(--bg2);color:var(--ac);padding:6px 14px;border-radius:99px;font-size:.8rem;margin-bottom:22px}
+.tag::before{content:"";display:inline-block;width:7px;height:7px;background:var(--ac);border-radius:50%;margin-right:8px;animation:pulse 1.6s infinite}
+@keyframes pulse{50%{opacity:.25}}
+h1{font-size:clamp(2.4rem,7vw,4.6rem);line-height:1.08;letter-spacing:-.03em;margin-bottom:18px}
+h1 em{font-style:normal;background:linear-gradient(90deg,var(--ac),var(--ac2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.role{font-size:1.25rem;color:var(--mut);min-height:2em}
+.role b{color:var(--tx);font-weight:500}
+.cursor{display:inline-block;width:2px;height:1.1em;background:var(--ac);vertical-align:middle;margin-left:3px;animation:pulse 1s infinite}
+.hero p.lead{max-width:560px;color:var(--mut);margin:18px 0 30px}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{padding:13px 26px;border-radius:12px;font-weight:500;border:1px solid var(--line);transition:.25s;display:inline-block}
+.btn.pri{background:linear-gradient(90deg,var(--ac),var(--ac2));color:#06121a;border:0}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px -10px var(--ac)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:56px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px}
+.stat strong{font-size:1.9rem;color:var(--ac);display:block}
+.stat span{font-size:.82rem;color:var(--mut)}
+.title{font-size:clamp(1.8rem,4vw,2.5rem);letter-spacing:-.02em;margin-bottom:8px}
+.title small{display:block;color:var(--ac);font-size:.8rem;font-family:'JetBrains Mono',monospace;font-weight:400;letter-spacing:.1em;margin-bottom:6px}
+.sub{color:var(--mut);margin-bottom:38px;max-width:560px}
+.about{display:grid;grid-template-columns:1.2fr 1fr;gap:34px;align-items:start}
+.about p{color:var(--mut);margin-bottom:14px}
+.term{background:#070a0f;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;font-size:.82rem}
+.term .h{display:flex;gap:7px;padding:11px 14px;background:#0d131b;border-bottom:1px solid var(--line)}
+.term .h i{width:10px;height:10px;border-radius:50%;background:#ff5f56}.term .h i:nth-child(2){background:#ffbd2e}.term .h i:nth-child(3){background:#27c93f}
+.term pre{padding:16px;color:#cfe3f5;overflow-x:auto;line-height:1.8}
+.term .k{color:var(--ac2)}.term .s{color:#2ee6a6}.term .c{color:#5a6b7d}
+.goals{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.goal{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:30px;position:relative;overflow:hidden;transition:.3s}
+.goal:hover{transform:translateY(-6px);border-color:var(--ac)}
+.goal::before{content:"";position:absolute;top:0;left:0;height:4px;width:100%;background:linear-gradient(90deg,var(--ac),var(--ac2))}
+.goal.sw::before{background:linear-gradient(90deg,var(--ac2),#b36bff)}
+.goal .n{font-size:3rem;font-weight:700;color:var(--line);line-height:1;float:right}
+.goal h3{font-size:1.3rem;margin:6px 0 10px}
+.goal p{color:var(--mut);font-size:.93rem;margin-bottom:16px}
+.goal ul{list-style:none;margin-bottom:18px}
+.goal li{color:var(--mut);font-size:.9rem;padding-left:22px;position:relative;margin-bottom:6px}
+.goal li::before{content:"▹";position:absolute;left:0;color:var(--ac)}
+.award{background:linear-gradient(135deg,color-mix(in srgb,var(--ac) 14%,var(--card)),var(--card));border:1px solid var(--ac);border-radius:var(--r);padding:22px 26px;margin-bottom:26px;display:flex;gap:18px;align-items:center}
+.award .tr{font-size:2.2rem}
+.award b{display:block;font-size:1.05rem}.award span{color:var(--mut);font-size:.88rem}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.sk{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.sk h3{font-size:1rem;margin-bottom:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{font-size:.78rem;padding:5px 11px;border-radius:8px;background:var(--bg2);border:1px solid var(--line);color:var(--mut);transition:.2s}
+.chips span:hover{color:var(--ac);border-color:var(--ac)}
+.filters{display:flex;gap:10px;margin-bottom:26px;flex-wrap:wrap}
+.filters button{background:none;border:1px solid var(--line);color:var(--mut);padding:8px 18px;border-radius:99px;cursor:pointer;font:inherit;font-size:.85rem;transition:.2s}
+.filters button.on,.filters button:hover{color:#06121a;background:var(--ac);border-color:var(--ac)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px;position:relative;overflow:hidden;transition:.3s;transform-style:preserve-3d}
+.card::after{content:"";position:absolute;inset:0;background:radial-gradient(260px circle at var(--x,50%) var(--y,0%),color-mix(in srgb,var(--ac) 16%,transparent),transparent 70%);opacity:0;transition:opacity .3s;pointer-events:none}
+.card:hover{border-color:var(--ac);transform:translateY(-6px)}
+.card:hover::after{opacity:1}
+.card .ic{font-size:1.8rem;margin-bottom:12px}
+.card h3{margin-bottom:8px}
+.card p{color:var(--mut);font-size:.92rem;margin-bottom:16px}
+.card.hide{display:none}
+.status{font-size:.72rem;color:var(--ac);border:1px solid var(--ac);padding:2px 9px;border-radius:99px;float:right}
+.tl{border-left:2px solid var(--line);margin-left:8px;padding-left:28px}
+.tl div{position:relative;margin-bottom:28px}
+.tl div::before{content:"";position:absolute;left:-37px;top:7px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--ac)}
+.tl h4{font-size:1.05rem}.tl span{font-size:.8rem;color:var(--ac)}.tl p{color:var(--mut);font-size:.92rem}
+.certs{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.cert{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--ac2);border-radius:12px;padding:16px 18px}
+.cert b{display:block;font-size:.95rem}.cert span{font-size:.8rem;color:var(--mut)}
+.contact{text-align:center;padding:40px 24px 20px}
+.contact .box{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:60px 24px;position:relative;overflow:hidden}
+.contact .box::before{content:"";position:absolute;width:300px;height:300px;background:var(--ac2);opacity:.12;filter:blur(60px);left:-60px;bottom:-100px;border-radius:50%}
+.links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:26px;position:relative}
+footer{text-align:center;color:var(--mut);font-size:.82rem;padding:40px 0}
+.rv{opacity:0;transform:translateY(30px);transition:.8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(max-width:760px){
+nav ul{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--bg);padding:20px;border-bottom:1px solid var(--line)}
+nav ul.open{display:flex}#menu{display:block}
+.about{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<nav><div class="wrap">
+<a href="#home" class="logo">subbaih<span>.</span>das</a>
+<button id="menu" aria-label="Menu">☰</button>
+<ul id="links">
+<li><a href="#about">About</a></li><li><a href="#goals">Goals</a></li><li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li><li><a href="#journey">Journey</a></li><li><a href="#contact">Contact</a></li>
+<li><button id="theme" aria-label="Toggle theme">☾</button></li>
+</ul></div></nav>
+
+<header class="hero" id="home"><div class="wrap">
+<div class="glow"></div>
+<span class="tag mono">Open to embedded &amp; IoT roles</span>
+<h1>Hi, I'm <em>Subbaih Das</em>.</h1>
+<div class="role">I build <b id="type"></b><span class="cursor"></span></div>
+<p class="lead">Electronics &amp; Communication Engineering student turning sensors, microcontrollers and code into things that sense, decide and act.</p>
+<div class="btns"><a href="#projects" class="btn pri">View my work</a><a href="#contact" class="btn">Get in touch</a></div>
+<div class="stats">
+<div class="stat"><strong data-n="10">0</strong><span>Projects &amp; ideas built</span></div>
+<div class="stat"><strong data-n="3">0</strong><span>Certificates earned</span></div>
+<div class="stat"><strong data-n="1">0</strong><span>Hackathon first prize</span></div>
+<div class="stat"><strong data-n="2028">0</strong><span>Graduating</span></div>
+</div></div></header>
+
+<section id="about"><div class="wrap">
+<h2 class="title rv"><small>01 / ABOUT</small>A little about me</h2>
+<div class="about rv">
+<div>
+<p>I'm a B.E. ECE student at Annai Vailankanni College of Engineering with a clear goal: becoming an Embedded Systems Engineer.</p>
+<p>I love working with ESP32, Arduino and STM32 boards, from wiring the circuit to writing the firmware and the dashboard that talks to it.</p>
+<p>I'm the lead developer for my department's website and app design, and I won first prize in a website development hackathon, so I'm comfortable on both the hardware and web side of a project.</p>
+</div>
+<div class="term"><div class="h"><i></i><i></i><i></i></div>
+<pre class="mono"><span class="c">// profile.cpp</span>
+<span class="k">struct</span> Engineer {
+  name   = <span class="s">"Subbaih Das I"</span>;
+  degree = <span class="s">"B.E. ECE"</span>;
+  base   = <span class="s">"Kanyakumari"</span>;
+  focus  = {<span class="s">"ESP32"</span>,<span class="s">"IoT"</span>,<span class="s">"RTOS"</span>};
+  status = <span class="s">"learning + building"</span>;
+};</pre></div>
+</div></div></section>
+
+<section id="goals"><div class="wrap">
+<h2 class="title rv"><small>02 / GOALS</small>Where I'm heading</h2>
+<p class="sub rv">Two tracks I'm working on at the same time: hardware that senses the world and software that people use.</p>
+<div class="goals rv">
+<div class="goal"><span class="n mono">01</span><span class="tag mono" style="margin-bottom:8px">IoT</span>
+<h3>Become an IoT &amp; Embedded Engineer</h3>
+<p>Design connected devices end to end, from the sensor and firmware to the cloud dashboard.</p>
+<ul><li>Master ESP32, STM32 and FreeRTOS</li><li>Build real-time, low-power connected systems</li><li>Land an embedded or IoT role</li></ul>
+<div class="chips"><span>ESP32</span><span>STM32</span><span>FreeRTOS</span><span>Sensors</span></div></div>
+<div class="goal sw"><span class="n mono">02</span><span class="tag mono" style="margin-bottom:8px">Software</span>
+<h3>Grow as a Software Developer</h3>
+<p>Build clean, fast web and mobile apps, and connect them to the devices I make.</p>
+<ul><li>Go deeper in React and full stack development</li><li>Write stronger Python and Java</li><li>Ship apps that work with IoT hardware</li></ul>
+<div class="chips"><span>React</span><span>Python</span><span>Java</span><span>HTML/CSS</span></div></div>
+</div></div></section>
+
+<section id="skills"><div class="wrap">
+<h2 class="title rv"><small>03 / SKILLS</small>Tools I work with</h2>
+<p class="sub rv">Hardware, firmware and web, all in one workflow.</p>
+<div class="skills rv">
+<div class="sk"><h3>⚙ Embedded</h3><div class="chips"><span>ESP32</span><span>STM32</span><span>Arduino</span><span>FreeRTOS</span><span>Embedded C</span></div></div>
+<div class="sk"><h3>💻 Software</h3><div class="chips"><span>Python</span><span>Java</span><span>React</span><span>HTML</span><span>CSS</span><span>ML basics</span></div></div>
+<div class="sk"><h3>🔌 Hardware</h3><div class="chips"><span>PCB design</span><span>Sensors</span><span>Relays &amp; motors</span><span>Tinkercad</span></div></div>
+</div></div></section>
+
+<section id="projects"><div class="wrap">
+<h2 class="title rv"><small>04 / PROJECTS</small>Things I've built</h2>
+<div class="filters rv" id="filters">
+<button class="on" data-f="all">All</button><button data-f="iot">IoT</button><button data-f="arduino">Arduino</button><button data-f="web">Software</button>
+</div>
+<div class="grid rv">
+<article class="card" data-c="iot"><span class="status mono">completed</span><div class="ic">🔥</div><h3>Fire Guard System</h3><p>Fire safety system using an ESP32-CAM with flame and fire sensors to detect and respond to danger.</p><div class="chips"><span>ESP32-CAM</span><span>Sensors</span></div></article>
+<article class="card" data-c="web"><span class="status mono">completed</span><div class="ic">🎙</div><h3>JARVIS Voice Assistant</h3><p>A free, fully local voice assistant for Android built with LiveKit, Ollama and Speaches.</p><div class="chips"><span>LiveKit</span><span>Ollama</span><span>Python</span></div></article>
+<article class="card" data-c="iot"><div class="ic">🚪</div><h3>Smart Door Security</h3><p>ESP32 with RFID, ultrasonic sensor and buzzer, plus a web dashboard and push alerts.</p><div class="chips"><span>ESP32</span><span>RFID</span><span>Flask</span></div></article>
+<article class="card" data-c="arduino"><div class="ic">📡</div><h3>Air Defence Radar</h3><p>Servo-swept ultrasonic radar with a live display that locks onto a target at 20 cm.</p><div class="chips"><span>Arduino</span><span>Processing</span></div></article>
+<article class="card" data-c="arduino"><div class="ic">🌱</div><h3>Auto Watering System</h3><p>Soil moisture sensing drives a relay and pump to water plants automatically.</p><div class="chips"><span>Arduino</span><span>Relay</span></div></article>
+<article class="card" data-c="arduino"><div class="ic">♻</div><h3>Waste Segregator</h3><p>Prototype that sorts waste using metal, rain-drop and IR sensors with motor drive.</p><div class="chips"><span>Arduino</span><span>Motors</span></div></article>
+<article class="card" data-c="web"><div class="ic">🏫</div><h3>ECE Department Website</h3><p>Designed and deployed the department site for Annai Vailankanni College of Engineering.</p><div class="chips"><span>HTML</span><span>CSS</span><span>GitHub Pages</span></div></article>
+</div></div></section>
+
+<section id="journey"><div class="wrap">
+<h2 class="title rv"><small>05 / JOURNEY</small>Learning &amp; certificates</h2>
+<div class="award rv"><div class="tr">🏆</div><div><b>First Prize · Website Development Hackathon</b><span>Built and presented a working website under time pressure.</span></div></div>
+<div class="tl rv">
+<div><span class="mono">2024 — 2028</span><h4>B.E. Electronics &amp; Communication Engineering</h4><p>Annai Vailankanni College of Engineering</p></div>
+<div><span class="mono">Hackathon</span><h4>First Prize, Website Development</h4><p>Won first place building a website in a competitive hackathon.</p></div>
+<div><span class="mono">Ongoing</span><h4>Lead Developer, Department Website &amp; App</h4><p>Design and development for the ECE department.</p></div>
+<div><span class="mono">Workshops</span><h4>Arduino · Embedded Systems · ML · PCB Design</h4><p>Hands-on workshops and many embedded and IoT project expos.</p></div>
+</div>
+<div class="certs rv">
+<div class="cert"><b>Cisco AI Technical Practitioner</b><span>Issued March 2026</span></div>
+<div class="cert"><b>RPA Foundations &amp; Hands-on</b><span>NxtWave · February 2026</span></div>
+<div class="cert"><b>Full Stack Web Development</b><span>Jobaaj Learnings · July 2026</span></div>
+</div></div></section>
+
+<section id="contact" class="contact"><div class="wrap rv"><div class="box">
+<h2 class="title" style="position:relative"><small>06 / CONTACT</small>Let's build something</h2>
+<p class="sub" style="margin:0 auto;position:relative">Looking for embedded, ESP32 or IoT opportunities. Drop me a message.</p>
+<div class="links">
+<a class="btn pri" href="mailto:dasvasanth93@gmail.com">Email me</a>
+<a class="btn" href="https://www.linkedin.com/in/subbiah-das" target="_blank" rel="noopener">LinkedIn</a>
+<a class="btn" href="tel:+918610026534">Call</a>
+</div></div></div></section>
+
+<footer>© <span id="yr"></span> Subbaih Das I · Kanyakumari, Tamil Nadu</footer>
+
+<script>
+(function(){
+var words=["embedded systems","ESP32 gadgets","IoT solutions","smart automation"],wi=0,ci=0,del=false,t=document.getElementById('type');
+function tick(){var w=words[wi];t.textContent=w.slice(0,ci);
+if(!del&&ci<w.length){ci++;setTimeout(tick,85)}
+else if(!del){del=true;setTimeout(tick,1400)}
+else if(ci>0){ci--;setTimeout(tick,40)}
+else{del=false;wi=(wi+1)%words.length;setTimeout(tick,300)}}
+tick();
+document.getElementById('yr').textContent=new Date().getFullYear();
+var bar=document.getElementById('bar');
+addEventListener('scroll',function(){var h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+var so=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var el=e.target,n=+el.dataset.n,c=0,step=Math.max(1,Math.ceil(n/60));
+var i=setInterval(function(){c+=step;if(c>=n){c=n;clearInterval(i)}el.textContent=c},24);so.unobserve(el)})});
+document.querySelectorAll('[data-n]').forEach(function(el){so.observe(el)});
+document.querySelectorAll('#filters button').forEach(function(b){b.onclick=function(){
+document.querySelectorAll('#filters button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');
+document.querySelectorAll('.card').forEach(function(c){c.classList.toggle('hide',b.dataset.f!=='all'&&c.dataset.c!==b.dataset.f)})}});
+document.querySelectorAll('.card').forEach(function(c){c.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--x',(e.clientX-r.left)+'px');c.style.setProperty('--y',(e.clientY-r.top)+'px')})});
+var menu=document.getElementById('menu'),ul=document.getElementById('links');
+menu.onclick=function(){ul.classList.toggle('open')};
+ul.querySelectorAll('a').forEach(function(a){a.onclick=function(){ul.classList.remove('open')}});
+var th=document.getElementById('theme');
+th.onclick=function(){document.body.classList.toggle('light');th.textContent=document.body.classList.contains('light')?'☀':'☾'};
+})();
+</script>
+</body>
+</html>
